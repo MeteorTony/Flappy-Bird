@@ -1,5 +1,58 @@
-canvas{
-    border: 1px solid #000;
-    display: block;
-    margin: 0 auto;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: darkseagreen;
+}
+
+canvas {
+  outline: 14px ridge lightblue;
+  outline-offset: -14px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* title animation */
+h2 {
+  font-family: "Teko";
+  font-size: 9vmin;
+  text-transform: uppercase;
+}
+
+.title {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-1 {
+  --color-1: #eb6822;
+  --color-2: #4bbef0;
+}
+
+.title-2 {
+  --color-1: #ce9722;
+  --color-2: #0aecd2;
+}
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
+  }
+  49% {
+    color: var(--color-1);
+  }
+  50% {
+    color: var(--color-2);
+  }
+  99% {
+    color: var(--color-2);
+  }
+  100% {
+    color: var(--color-1);
+  }
 }

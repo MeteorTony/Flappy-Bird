@@ -349,17 +349,13 @@ const pipes = {
   },
 
   update: function () {
-    console.log(state.current);
     if (state.current !== state.playing) return;
-    console.log(frames);
     if (frames % 100 == 0) {
-      console.log("hi");
       // every 100 frames
       this.position.push({
         x: canvas.width,
         y: this.maxYPos * (Math.random() + 1), // range: -150 - -300
       });
-      console.log(this.position);
     }
     for (let i = 0; i < this.position.length; i++) {
       let p = this.position[i];
