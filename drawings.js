@@ -42,7 +42,7 @@ const startBtn = {
 };
 
 // game controller using game state
-canvas.addEventListener("click", e => {
+var flapping = canvas.addEventListener("click", e => {
   switch (state.current) {
     case state.getReady:
       state.current = state.playing;
@@ -73,6 +73,14 @@ canvas.addEventListener("click", e => {
       break;
   }
 });
+
+document.addEventListener("keyup", e => {
+  if(e.code === "Space"){
+    console.log("here");
+    canvas.click();
+  }
+})
+
 
 // background image(i.e. buildings & cloud)
 export const bg = {
