@@ -1,7 +1,7 @@
-import {frames} from "./main.js";
+import { frames } from "./main.js";
 
-export const canvas = document.getElementById("bird");
-export const context = canvas.getContext("2d");
+const canvas = document.getElementById("bird");
+const context = canvas.getContext("2d");
 
 const DEGREE = Math.PI / 180; // radian (for rotation)
 
@@ -42,7 +42,7 @@ const startBtn = {
 };
 
 // game controller using game state
-var flapping = canvas.addEventListener("click", e => {
+var flapping = canvas.addEventListener("click", (e) => {
   switch (state.current) {
     case state.getReady:
       state.current = state.playing;
@@ -74,16 +74,13 @@ var flapping = canvas.addEventListener("click", e => {
   }
 });
 
-document.addEventListener("keyup", e => {
-  if(e.code === "Space"){
-    console.log("here");
-    canvas.click();
-  }
-})
-
+// can also press spacebar to flap bird
+document.addEventListener("keyup", (e) => {
+  if (e.code === "Space") canvas.click();
+});
 
 // background image(i.e. buildings & cloud)
-export const bg = {
+const bg = {
   sX: 0,
   sY: 0,
   w: 275,
@@ -118,7 +115,7 @@ export const bg = {
 };
 
 // foreground image (i.e. yellow ground)
-export const fg = {
+const fg = {
   sX: 276,
   sY: 0,
   w: 224,
@@ -161,7 +158,7 @@ export const fg = {
   },
 };
 
-export const bird = {
+const bird = {
   // flapping animation
   animation: [
     { sX: 276, sY: 112 },
@@ -246,7 +243,7 @@ export const bird = {
 };
 
 // get ready message
-export const getReady = {
+const getReady = {
   sX: 0,
   sY: 228,
   w: 173,
@@ -272,7 +269,7 @@ export const getReady = {
 };
 
 // game over message
-export const gameOver = {
+const gameOver = {
   sX: 175,
   sY: 228,
   w: 225,
@@ -356,7 +353,7 @@ const pipes = {
     if (state.current !== state.playing) return;
     console.log(frames);
     if (frames % 100 == 0) {
-      console.log("hi")
+      console.log("hi");
       // every 100 frames
       this.position.push({
         x: canvas.width,
@@ -442,21 +439,4 @@ const score = {
   },
 };
 
-export function update() {
-  bird.update();
-  fg.update();
-  pipes.update();
-}
-
-export function draw() {
-  context.fillStyle = "#70c5ce"; // sky color
-  context.fillRect(0, 0, canvas.width, canvas.height);
-
-  bg.draw();
-  pipes.draw();
-  fg.draw();
-  bird.draw();
-  getReady.draw();
-  gameOver.draw();
-  score.draw();
-}
+export { bg, pipes, fg, bird, getReady, gameOver, score, context, canvas };
